@@ -15,7 +15,9 @@
   <% @messages.each do |message| %>
     <li>
       <% user = User.find_by(id: message.user_id) %>
-      <%= message.title %><br>
+      <a href = "/messages/<%= message.id %>">
+        <%= message.title %>
+      </a><br>
       by <%= user.username %> on <%= message.created_at %><br>
       <%= message.body %>
     </li>

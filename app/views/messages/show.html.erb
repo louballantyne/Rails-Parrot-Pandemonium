@@ -1,0 +1,16 @@
+<h1>Q & A</h1>
+<% if flash[:notice] %>
+  <%=flash[:notice] %><br>
+<% end %>
+<% if !!session[:username] %>
+  Welcome, <%= session[:username] %><br>
+
+  <a href = "/messages/new"> Post a question </a><br>
+<% else %>
+  <a href = "/sessions/new"> Login </a><br>
+<% end %>
+      <% user = User.find_by(id: @message.user_id) %>
+        <h2><%= @message.title %></h2>
+      <br>
+      <p>by <%= user.username %> on <%= @message.created_at %></p>
+      <%= @message.body %>
