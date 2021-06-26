@@ -1,0 +1,23 @@
+<h1>Q & A</h1>
+<% if flash[:notice] %>
+  <%=flash[:notice] %><br>
+<% end %>
+<% if !!session[:username] %>
+  Welcome, <%= session[:username] %><br>
+
+  <a href = "/messages/new"> Post a question </a><br>
+<% else %>
+  <a href = "/sessions/new"> Login </a><br>
+<% end %>
+
+<h1> Questions </h1>
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+      <% user = User.find_by(id: message.user_id) %>
+      <%= message.title %><br>
+      by <%= user.username %> on <%= message.created_at %><br>
+      <%= message.body %>
+    </li>
+  <% end %>
+</ul>

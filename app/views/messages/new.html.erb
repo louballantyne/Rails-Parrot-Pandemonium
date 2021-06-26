@@ -1,0 +1,22 @@
+<h1>Q & A</h1>
+<% if !!session[:username] %>
+  Welcome, <%= session[:username] %><br>
+  Post a question:
+  <%= form_with model: @message do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+  <% end %>
+<% else %>
+  <a href = "/sessions/new"> Login </a><br>
+<% end %>
