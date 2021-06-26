@@ -9,8 +9,19 @@
 <% else %>
   <a href = "/sessions/new"> Login </a><br>
 <% end %>
-      <% user = User.find_by(id: @message.user_id) %>
-        <h2><%= @message.title %></h2>
-      <br>
-      <p>by <%= user.username %> on <%= @message.created_at %></p>
-      <%= @message.body %>
+
+<% user = User.find_by(id: @message.user_id) %>
+  <h2><%= @message.title %></h2>
+<br>
+<p>by <%= user.username %> on <%= @message.created_at %></p>
+<p><%= @message.body %></p>
+<%= form_with model: [@message, @message.replies.build] do |form| %>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
