@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  has_many :messages
   
   def create
 
