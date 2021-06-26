@@ -13,8 +13,21 @@
 <% user = User.find_by(id: @message.user_id) %>
   <h2><%= @message.title %></h2>
 <br>
-<p>by <%= user.username %> on <%= @message.created_at %></p>
+<p>by <b><%= user.username %></b> on <%= @message.created_at %></p>
 <p><%= @message.body %></p>
+
+<h3> Answers </h3>
+
+<% @message.replies.each do |reply| %>
+  <p>
+    <% user = User.find_by(id: reply.user_id) %>
+    <p><b><%= user.username %></b> said:</p>
+      <%= reply.body %><br>
+      on: <%= reply.created_at %><br><br>
+<% end %>
+
+
+
 <%= form_with model: [@message, @message.replies.build] do |form| %>
   <div>
     <%= form.label :body %><br>

@@ -6020,3 +6020,189 @@ Processing by MessagesController#show as HTML
 Completed 200 OK in 29ms (Views: 25.3ms | ActiveRecord: 1.6ms | Allocations: 7409)
 
 
+Started GET "/messages/3" for 127.0.0.1 at 2021-06-26 11:55:02 +0100
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMessage Load (1.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/show.html.erb within layouts/application
+  Rendered messages/show.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1395)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 1476)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.1ms | Allocations: 3308)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <h1>Q & A</h1>
+<% if flash[:notice] %>
+  <%=flash[:notice] %><br>
+<% end %>
+<% if !!session[:username] %>
+  Welcome, <%= session[:username] %><br>
+
+  <a href = "/messages/new"> Post a question </a><br>
+<% else %>
+  <a href = "/sessions/new"> Login </a><br>
+<% end %>
+
+<% user = User.find_by(id: @message.user_id) %>
+  <h2><%= @message.title %></h2>
+<br>
+<p>by <%= user.username %> on <%= @message.created_at %></p>
+<p><%= @message.body %></p>
+
+<h3> Answers </h3>
+
+<% @message.replies.each do |reply| %>
+  <p>
+    <% user = User.find_by(id: reply.user_id) %>
+    <p><b><%= user.username %> said:</p>
+      <%= reply.body %><br>
+      at: <%= reply.created_at %><br><br>
+
+
+
+<%= form_with model: [@message, @message.replies.build] do |form| %>
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+):
+1:    <h1>Q & A</h1>
+2:    <% if flash[:notice] %>
+3:      <%=flash[:notice] %><br>
+4:    <% end %>
+5:    <% if !!session[:username] %>
+6:      Welcome, <%= session[:username] %><br>
+7:    
+8:      <a href = "/messages/new"> Post a question </a><br>
+9:    <% else %>
+10:      <a href = "/sessions/new"> Login </a><br>
+11:    <% end %>
+12:    
+13:    <% user = User.find_by(id: @message.user_id) %>
+14:      <h2><%= @message.title %></h2>
+15:    <br>
+16:    <p>by <%= user.username %> on <%= @message.created_at %></p>
+17:    <p><%= @message.body %></p>
+18:    
+19:    <h3> Answers </h3>
+20:    
+21:    <% @message.replies.each do |reply| %>
+22:      <p>
+23:        <% user = User.find_by(id: reply.user_id) %>
+24:        <p><b><%= user.username %> said:</p>
+25:          <%= reply.body %><br>
+26:          at: <%= reply.created_at %><br><br>
+27:    
+28:    
+29:    
+30:    <%= form_with model: [@message, @message.replies.build] do |form| %>
+31:      <div>
+32:        <%= form.label :body %><br>
+33:        <%= form.text_area :body %>
+34:      </div>
+35:    
+36:      <div>
+37:        <%= form.submit %>
+38:      </div>
+39:    <% end %>
+  
+app/views/messages/show.html.erb:41: syntax error, unexpected end-of-input, expecting end
+app/views/messages/show.html.erb:41: syntax error, unexpected end-of-input, expecting end
+app/views/messages/show.html.erb:41: syntax error, unexpected end-of-input, expecting end
+app/views/messages/show.html.erb:41: syntax error, unexpected end-of-input, expecting end
+app/views/messages/show.html.erb:41: syntax error, unexpected end-of-input, expecting end
+app/views/messages/show.html.erb:41: syntax error, unexpected end-of-input, expecting end
+Started GET "/messages/3" for 127.0.0.1 at 2021-06-26 11:55:24 +0100
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMessage Load (1.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/show.html.erb within layouts/application
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:13
+  [1m[36mReply Load (6.5ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."message_id" = $1[0m  [["message_id", 3]]
+  ↳ app/views/messages/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  Rendered messages/show.html.erb within layouts/application (Duration: 28.0ms | Allocations: 5472)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.1ms | Allocations: 9567)
+Completed 200 OK in 51ms (Views: 36.7ms | ActiveRecord: 9.4ms | Allocations: 11427)
+
+
+Started GET "/messages/3" for 127.0.0.1 at 2021-06-26 11:55:39 +0100
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMessage Load (1.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/show.html.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:13
+  [1m[36mReply Load (1.8ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."message_id" = $1[0m  [["message_id", 3]]
+  ↳ app/views/messages/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  Rendered messages/show.html.erb within layouts/application (Duration: 12.0ms | Allocations: 2583)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.2ms | Allocations: 6499)
+Completed 200 OK in 29ms (Views: 20.7ms | ActiveRecord: 4.6ms | Allocations: 7616)
+
+
+Started GET "/messages/3" for 127.0.0.1 at 2021-06-26 11:55:51 +0100
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMessage Load (1.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/show.html.erb within layouts/application
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:13
+  [1m[36mReply Load (1.7ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."message_id" = $1[0m  [["message_id", 3]]
+  ↳ app/views/messages/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  Rendered messages/show.html.erb within layouts/application (Duration: 16.6ms | Allocations: 3005)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.8ms | Allocations: 7099)
+Completed 200 OK in 41ms (Views: 30.3ms | ActiveRecord: 4.8ms | Allocations: 8955)
+
+
+Started GET "/messages/3" for 127.0.0.1 at 2021-06-26 11:56:13 +0100
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mMessage Load (1.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/show.html.erb within layouts/application
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:13
+  [1m[36mReply Load (1.7ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."message_id" = $1[0m  [["message_id", 3]]
+  ↳ app/views/messages/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:23
+  Rendered messages/show.html.erb within layouts/application (Duration: 17.5ms | Allocations: 3012)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.9ms | Allocations: 7107)
+Completed 200 OK in 42ms (Views: 30.6ms | ActiveRecord: 6.0ms | Allocations: 8969)
+
+
