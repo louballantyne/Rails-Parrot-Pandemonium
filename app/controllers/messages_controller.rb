@@ -32,6 +32,15 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    @message = Message.find(params[:id])
+    if @message.destroy
+      redirect_to '/messages/index', notice: "Successfully Deleted"
+    else
+      redirect_to '/messages/index', notice: "Please try again"
+    end
+  end
+
   private
 
   def message_params

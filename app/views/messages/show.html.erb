@@ -17,23 +17,26 @@
 <br>
 <p>by <b><%= user.username %></b> on <%= @message.created_at %></p>
 <p><%= @message.body %></p>
+<%= link_to 'Edit Question', edit_message_path(@message)%><br>
+<%= link_to 'Delete', message_path(@message),
+                      method: :delete,
+                      data: { confirm: "Are you sure you wish to delete this question?" }%>
+
 
 <h3> Answers </h3>
 
-<% @message.replies.each do |reply| %>
+<% @message.replies.reverse.each do |reply| %>
   <p>
     <% user = User.find_by(id: reply.user_id) %>
     <p><b><%= user.username %></b> said:</p>
       <%= reply.body %><br>
       on: <%= reply.created_at %><br><br>
 <% end %>
-<%= link_to 'Edit', edit_message_path(@message)%>
 
 
 
 <%= form_with model: [@message, @message.replies.build] do |form| %>
   <div>
-    <%= form.label :body %><br>
     <%= form.text_area :body %>
   </div>
 
