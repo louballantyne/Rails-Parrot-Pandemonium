@@ -17,7 +17,21 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
   end
-  
+
+  def edit
+    @message = Message.find(params[:id])
+  end
+
+  def update
+    @message = Message.find(params[:id])
+
+    if @message.update(message_params)
+      redirect_to '/messages/index', notice: "Successfully Updated"
+    else
+      render :edit, notice: "Please try again"
+    end
+  end
+
   private
 
   def message_params

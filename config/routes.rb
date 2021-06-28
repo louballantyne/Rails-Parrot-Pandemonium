@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/messages/:id', to: 'messages#show'
   get '/articles', to: 'articles#index'
   root to: 'articles#index'
-  resources :messages, only: [:show] do
+  resources :messages do
     resources :replies
   end
   resources :users
