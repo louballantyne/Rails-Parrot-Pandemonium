@@ -7699,3 +7699,96 @@ Processing by MessagesController#index as HTML
 Completed 200 OK in 20ms (Views: 16.3ms | ActiveRecord: 3.0ms | Allocations: 6967)
 
 
+Started GET "/messages/index" for 127.0.0.1 at 2021-06-28 13:00:40 +0100
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (6.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:17
+  [1m[36mUser Load (6.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  Rendered messages/index.html.erb within layouts/application (Duration: 94.9ms | Allocations: 6346)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 141.9ms | Allocations: 10443)
+Completed 200 OK in 155ms (Views: 150.7ms | ActiveRecord: 57.3ms | Allocations: 11609)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-28 13:00:46 +0100
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 255)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 4136)
+Completed 200 OK in 26ms (Views: 23.1ms | ActiveRecord: 0.0ms | Allocations: 5076)
+
+
+Started GET "/messages/index" for 127.0.0.1 at 2021-06-28 13:00:48 +0100
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (1.8ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:17
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  Rendered messages/index.html.erb within layouts/application (Duration: 19.4ms | Allocations: 2519)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 139.7ms | Allocations: 6440)
+Completed 200 OK in 144ms (Views: 137.4ms | ActiveRecord: 3.3ms | Allocations: 6867)
+
+
+Started GET "/messages/new" for 127.0.0.1 at 2021-06-28 13:00:49 +0100
+Processing by MessagesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/new.html.erb within layouts/application
+  Rendered messages/_form.html.erb (Duration: 42.3ms | Allocations: 3205)
+  Rendered messages/new.html.erb within layouts/application (Duration: 47.7ms | Allocations: 3593)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 55.8ms | Allocations: 7398)
+Completed 200 OK in 60ms (Views: 56.4ms | ActiveRecord: 0.0ms | Allocations: 7914)
+
+
+Started POST "/messages/new" for 127.0.0.1 at 2021-06-28 13:01:01 +0100
+Processing by MessagesController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "title"=>"Bed Tme", "body"=>"What time do you put your birds to bed?", "commit"=>"Save "}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:7:in `create'
+[31mUnpermitted parameters: :authenticity_token, :commit[0m
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/messages_controller.rb:8:in `create'
+  [1m[36mMessage Create (3.8ms)[0m  [1m[32mINSERT INTO "messages" ("title", "body", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Bed Tme"], ["body", "What time do you put your birds to bed?"], ["user_id", 1], ["created_at", "2021-06-28 12:01:01.979025"], ["updated_at", "2021-06-28 12:01:01.979025"]]
+  ↳ app/controllers/messages_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (442.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/messages_controller.rb:8:in `create'
+Redirected to http://127.0.0.1:3000/messages/index
+Completed 302 Found in 464ms (ActiveRecord: 449.3ms | Allocations: 4371)
+
+
+Started GET "/messages/index" for 127.0.0.1 at 2021-06-28 13:01:02 +0100
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (1.9ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:17
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  Rendered messages/index.html.erb within layouts/application (Duration: 13.3ms | Allocations: 2987)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.2ms | Allocations: 6905)
+Completed 200 OK in 28ms (Views: 22.9ms | ActiveRecord: 3.9ms | Allocations: 7335)
+
+

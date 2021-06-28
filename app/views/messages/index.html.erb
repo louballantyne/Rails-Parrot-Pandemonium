@@ -14,7 +14,7 @@
 
 <h1> Questions </h1>
 <ul>
-  <% @messages.each do |message| %>
+  <% @messages.reverse.each do |message| %>
     <li>
       <% user = User.find_by(id: message.user_id) %>
       <a href = "/messages/<%= message.id %>">
