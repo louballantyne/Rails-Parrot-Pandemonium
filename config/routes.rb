@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'sessions/destroy', to: 'sessions#destroy'
   get '/users/new', to: 'users#new'
   post '/users/new', to: 'users#create'
+  get '/users/edit', to: 'users#edit'
+  
   get 'messages/index', to: 'messages#index'
   get 'messages/new', to: 'messages#new'
   post '/messages/new', to: 'messages#create'

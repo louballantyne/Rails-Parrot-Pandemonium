@@ -1,5 +1,6 @@
-<h1>Q & A</h1>
-<% if !!session[:username] %>
+<h1><a href="/"> Parrot Pandemonium </a></h1>
+
+<h2>Q & A</h2><% if !!session[:username] %>
   Welcome, <%= session[:username] %><br>
   Post a question:
   <%= form_with model: @message do |form| %>
