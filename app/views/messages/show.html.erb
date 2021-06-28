@@ -17,11 +17,12 @@
 <br>
 <p>by <b><%= user.username %></b> on <%= @message.created_at %></p>
 <p><%= @message.body %></p>
-<%= link_to 'Edit Question', edit_message_path(@message)%><br>
-<%= link_to 'Delete', message_path(@message),
-                      method: :delete,
-                      data: { confirm: "Are you sure you wish to delete this question?" }%>
-
+<% if session[:user_id] == @message.user_id %>
+  <%= link_to 'Edit Question', edit_message_path(@message)%><br>
+  <%= link_to 'Delete', message_path(@message),
+                        method: :delete,
+                        data: { confirm: "Are you sure you wish to delete this question?" }%>
+<% end %>
 
 <h3> Answers </h3>
 

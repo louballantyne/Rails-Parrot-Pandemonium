@@ -8065,3 +8065,140 @@ Processing by MessagesController#index as HTML
 Completed 200 OK in 37ms (Views: 30.5ms | ActiveRecord: 4.7ms | Allocations: 7314)
 
 
+Started GET "/messages/6" for 127.0.0.1 at 2021-06-28 13:13:50 +0100
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMessage Load (1.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/show.html.erb within layouts/application
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:15
+  [1m[36mReply Load (1.7ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."message_id" = $1[0m  [["message_id", 6]]
+  ↳ app/views/messages/show.html.erb:28
+  Rendered messages/show.html.erb within layouts/application (Duration: 9.5ms | Allocations: 2040)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.3ms | Allocations: 5956)
+Completed 200 OK in 31ms (Views: 22.1ms | ActiveRecord: 4.4ms | Allocations: 7079)
+
+
+Started GET "/messages/6" for 127.0.0.1 at 2021-06-28 13:14:36 +0100
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMessage Load (2.1ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/show.html.erb within layouts/application
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:15
+  [1m[36mReply Load (2.5ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."message_id" = $1[0m  [["message_id", 6]]
+  ↳ app/views/messages/show.html.erb:29
+  Rendered messages/show.html.erb within layouts/application (Duration: 18.8ms | Allocations: 2516)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.7ms | Allocations: 6610)
+Completed 200 OK in 45ms (Views: 31.2ms | ActiveRecord: 7.5ms | Allocations: 8471)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-28 13:14:37 +0100
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 255)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.1ms | Allocations: 4174)
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.0ms | Allocations: 5117)
+
+
+Started GET "/sessions/destroy" for 127.0.0.1 at 2021-06-28 13:14:38 +0100
+Processing by SessionsController#destroy as HTML
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 263)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-28 13:14:38 +0100
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 57)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 3980)
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 4409)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2021-06-28 13:14:40 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 3040)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 6844)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.0ms | Allocations: 7757)
+
+
+Started POST "/sessions/new" for 127.0.0.1 at 2021-06-28 13:14:43 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "username"=>"rio", "password"=>"[FILTERED]", "commit"=>"Save "}
+[31mUnpermitted parameters: :authenticity_token, :commit[0m
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "rio"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:3:in `create'
+[31mUnpermitted parameters: :authenticity_token, :commit[0m
+[31mUnpermitted parameters: :authenticity_token, :commit[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 304ms (ActiveRecord: 2.5ms | Allocations: 1343)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-28 13:14:43 +0100
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 66)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 3988)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 4406)
+
+
+Started GET "/messages/index" for 127.0.0.1 at 2021-06-28 13:14:45 +0100
+Processing by MessagesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering messages/index.html.erb within layouts/application
+  [1m[36mMessage Load (1.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/views/messages/index.html.erb:17
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/index.html.erb:19
+  Rendered messages/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 2832)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.7ms | Allocations: 6751)
+Completed 200 OK in 28ms (Views: 22.4ms | ActiveRecord: 3.2ms | Allocations: 7300)
+
+
+Started GET "/messages/6" for 127.0.0.1 at 2021-06-28 13:14:47 +0100
+Processing by MessagesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mMessage Load (1.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/messages_controller.rb:18:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering messages/show.html.erb within layouts/application
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/messages/show.html.erb:15
+  [1m[36mReply Load (1.6ms)[0m  [1m[34mSELECT "replies".* FROM "replies" WHERE "replies"."message_id" = $1[0m  [["message_id", 6]]
+  ↳ app/views/messages/show.html.erb:29
+  Rendered messages/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 1984)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 468.8ms | Allocations: 5901)
+Completed 200 OK in 474ms (Views: 466.5ms | ActiveRecord: 4.4ms | Allocations: 7024)
+
+
+Started GET "/" for 127.0.0.1 at 2021-06-28 13:14:50 +0100
+Processing by ArticlesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering articles/index.html.erb within layouts/application
+  Rendered articles/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 62)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 63.3ms | Allocations: 3983)
+Completed 200 OK in 65ms (Views: 64.4ms | ActiveRecord: 0.0ms | Allocations: 4398)
+
+
