@@ -1,0 +1,9 @@
+<h1><a href="/"> Parrot Pandemonium </a></h1>
+
+<h2>View Profile</h2>
+<% if flash[:notice] %>
+  <%=flash[:notice] %><br>
+<% end %>
+Username:  <%= @user.username %><br>
+E-mail Address: <%= @user.email %><br>
+<%= link_to 'Edit', edit_user_path(@user)%>

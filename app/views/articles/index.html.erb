@@ -4,7 +4,7 @@
 <% end %>
 <% if !!session[:username] %>
   Welcome, <%= session[:username] %><br>
-  <a href = "/users/edit"> Update Details </a>
+  <a href="/users/<%=session[:user_id]%>">Update Details</a>
   <a href = "/sessions/destroy"> Logout </a>
 <% else %>
   <a href = "/users/new"> Create User </a><br>
